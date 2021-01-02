@@ -15,8 +15,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     // set your configuration on the auth object
 
-    auth.inMemoryAuthentication().withUser("thetooaung").password("thetooaung").roles("USER").and().withUser("toa2")
-        .password("toa2").roles("ADMIN");
+    auth.inMemoryAuthentication().withUser("thetooaung").password("thetooaung").roles("ADMIN").and().withUser("toa2")
+        .password("toa2").roles("USER");
   }
 
   @Bean
@@ -28,7 +28,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
   
     http.authorizeRequests()
-    .antMatchers("/**").hasRole("USER").and().formLogin();
+    .antMatchers("/admin").hasRole("ADMIN")
+    .antMatchers("/user").hasAnyRole("USER", "ADMIN")
+    .antMatchers("/").permitAll()
+    .and().formLogin();
   }
 
   
