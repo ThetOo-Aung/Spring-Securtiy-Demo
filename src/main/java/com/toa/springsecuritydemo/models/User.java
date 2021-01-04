@@ -6,8 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.sun.istack.NotNull;
-
 @Entity
 @Table(name = "user")
 public class User {
@@ -17,7 +15,7 @@ public class User {
 
   private String userName;
   private String password;
-  @NotNull
+
   private boolean active;
   private String roles;
 
