@@ -1,4 +1,4 @@
-package com.toa.springsecuritydemo;
+package com.toa.springsecuritydemo.services;
 
 import java.util.Optional;
 
@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.toa.springsecuritydemo.UserRepository;
 import com.toa.springsecuritydemo.models.MyUserDetails;
 import com.toa.springsecuritydemo.models.User;
 
