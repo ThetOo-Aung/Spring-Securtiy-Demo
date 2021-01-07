@@ -26,8 +26,8 @@ public class HomeResource {
   @Autowired
   private MyUserDetailsService myUserDetailsService;
 
-//  @Autowired
-//  private JwtUtil jwtTokenUtil;
+  @Autowired
+  private JwtUtil jwtTokenUtil;
 
   @GetMapping("/home")
   public String home() {
@@ -61,7 +61,7 @@ public class HomeResource {
     final UserDetails userDetails = myUserDetailsService
         .loadUserByUsername(authenticationRequest.getUsername());
 
-    final String jwt = new JwtUtil().generateToken(userDetails);
+    final String jwt = jwtTokenUtil.generateToken(userDetails);
 
     return ResponseEntity.ok(new AuthenticationResponse(jwt));
   }
